@@ -32,6 +32,12 @@ class App extends Component {
     });
   };
 
+  filterContacts = contacts => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    );
+  };
+
   handleInput = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
@@ -63,12 +69,11 @@ class App extends Component {
         </Section>
         {contacts.length > 0 && (
           <Section title="Contacts">
-            <Filter
+            <Filter filter={filter} handleInput={this.handleInput} />
+            <Contacts
               contacts={contacts}
-              filter={filter}
-              handleInput={this.handleInput}
+              filterContacts={this.filterContacts}
             />
-            <Contacts contacts={contacts} />
           </Section>
         )}
       </>

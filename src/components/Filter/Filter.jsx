@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export class Filter extends Component {
   render() {
-    const { contacts, filter, handleInput } = this.props;
+    const { filter, handleInput } = this.props;
     return (
       <>
         <label>
@@ -21,7 +21,6 @@ export class Filter extends Component {
 }
 
 Filter.propTypes = {
-  contacts: PropTypes.array.isRequired,
   filter: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
 };

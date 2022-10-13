@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 export class Contacts extends Component {
   render() {
+    const { contacts, filterContacts } = this.props;
     return (
       <>
         <ul>
-          {this.props.contacts.map(contact => (
+          {filterContacts(contacts).map(contact => (
             <li key={contact.id}>
               {contact.name}: {contact.number}
             </li>
@@ -18,5 +19,6 @@ export class Contacts extends Component {
 }
 
 Contacts.propTypes = {
+  filterContacts: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };
