@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 
 export class Contacts extends Component {
   render() {
-    const { contacts, filterContacts } = this.props;
+    const { contacts, filterContacts, handleClickDelete } = this.props;
     return (
       <>
         <ul>
           {filterContacts(contacts).map(contact => (
             <li key={contact.id}>
-              {contact.name}: {contact.number}
+              <span>
+                {contact.name}: {contact.number}
+              </span>
+              <button id={contact.id} onClick={handleClickDelete} type="button">
+                Delete
+              </button>
             </li>
           ))}
         </ul>

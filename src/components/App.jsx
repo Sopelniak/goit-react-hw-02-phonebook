@@ -24,18 +24,35 @@ class App extends Component {
       number: number,
       id: nanoid(),
     };
-
-    this.setState(prevState => {
-      return {
-        contacts: [...prevState.contacts, newContact],
-      };
-    });
+    if (
+      this.state.contacts.find(
+        contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+      )
+    ) {
+      return alert(`${newContact.name} is already in contacts`);
+    } else {
+      this.setState(prevState => {
+        return {
+          contacts: [...prevState.contacts, newContact],
+        };
+      });
+    }
   };
 
   filterContacts = contacts => {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
     );
+  };
+
+  handleClickDelete = e => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== e.target.id
+        ),
+      };
+    });
   };
 
   handleInput = ({ target: { name, value } }) => {
@@ -73,6 +90,7 @@ class App extends Component {
             <Contacts
               contacts={contacts}
               filterContacts={this.filterContacts}
+              handleClickDelete={this.handleClickDelete}
             />
           </Section>
         )}
