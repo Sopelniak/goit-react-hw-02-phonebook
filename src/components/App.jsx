@@ -31,6 +31,7 @@ class App extends Component {
     ) {
       return alert(`${newContact.name} is already in contacts`);
     } else {
+      this.reset();
       this.setState(prevState => {
         return {
           contacts: [...prevState.contacts, newContact],
@@ -63,7 +64,6 @@ class App extends Component {
     const { name, number } = e.target.elements;
     e.preventDefault();
     this.addContact(name.value, number.value);
-    this.reset();
   };
 
   reset = () => {
