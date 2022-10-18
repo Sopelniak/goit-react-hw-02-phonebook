@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import s from './Contacts.module.scss';
 
 export class Contacts extends Component {
   render() {
@@ -8,13 +9,19 @@ export class Contacts extends Component {
       <>
         <ul>
           {filterContacts(contacts).map(contact => (
-            <li key={contact.id}>
-              <span>
-                {contact.name}: {contact.number}
-              </span>
-              <button id={contact.id} onClick={handleClickDelete} type="button">
-                Delete
-              </button>
+            <li className={s['contact-item']} key={contact.id}>
+              <span className={s.name}>{contact.name}:</span>
+              <div>
+                <span className={s.number}>{contact.number}</span>
+                <button
+                  className={s['btn-delete']}
+                  id={contact.id}
+                  onClick={handleClickDelete}
+                  type="button"
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

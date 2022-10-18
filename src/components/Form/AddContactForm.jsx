@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import s from './Form.module.scss';
 
 export class AddContactForm extends Component {
   render() {
@@ -8,7 +9,8 @@ export class AddContactForm extends Component {
       <>
         <form onSubmit={onSubmit}>
           <label>
-            Name
+            <span>Name</span>
+
             <input
               onChange={handleInput}
               value={name}
@@ -21,7 +23,8 @@ export class AddContactForm extends Component {
             />
           </label>
           <label>
-            Number
+            <span>Number</span>
+
             <input
               onChange={handleInput}
               value={number}

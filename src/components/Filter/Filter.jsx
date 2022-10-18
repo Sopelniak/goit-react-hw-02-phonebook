@@ -7,7 +7,8 @@ export class Filter extends Component {
     return (
       <>
         <label>
-          Find contacts by name
+          <span>Find contacts by name</span>
+
           <input
             onChange={handleInput}
             value={filter}
